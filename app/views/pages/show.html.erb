@@ -1,0 +1,25 @@
+
+<% @page_title = "View " + @page.name %>
+
+<%= link_to "Back to List", :action => 'list' %>
+
+<table>
+	<tr>
+		<th>Page Name</th>
+		<td><%= @page.name %></td>
+	</tr>
+	<tr>
+		<th>Permalink</th>
+		<td><%= @page.permalink %></td>
+	</tr>
+	<tr>
+		<th>Position</th>
+		<td><%= @page.position %></td>
+	</tr>
+	<tr>
+		<th>Visible</th>
+		<td><%= @page.visible ? 'Yes' : 'No' %></td>
+	</tr>
+	
+	
+</table>

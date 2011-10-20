@@ -1,0 +1,15 @@
+
+<%= link_to "Back to List", {:action => 'list'} %>
+
+
+<h2>Edit Section</h2>
+
+<%= form_for(:section, :url => { :action => 'update', :id => @section.id }) do |f| %>
+	
+	<%= render(:partial => 'form', :locals => {:f => f}) %>
+	
+	<div>
+		<%= submit_tag "Update Section" %>
+	</div>
+	
+<% end %>

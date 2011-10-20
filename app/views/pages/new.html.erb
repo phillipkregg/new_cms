@@ -1,0 +1,15 @@
+
+<%= link_to "Back to List", :action => 'list' %>
+
+<h2>Create a New Page</h2>
+
+
+<%= form_for(:page, :url => {:action => 'create' }) do |f| %>
+
+	<%= render(:partial => 'form', :locals => { :f => f }) %>
+
+	<div>
+		<%= submit_tag "Create Page" %>
+	</div>
+
+<% end %>

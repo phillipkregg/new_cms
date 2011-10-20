@@ -1,0 +1,30 @@
+
+<% @page_title = "Pages List" %>
+
+<h2>Pages List</h2>
+
+<%= link_to "Create New Page", :action => 'new' %>
+
+<table>
+	<tr>
+		<th>Page Name</th>
+		<th>Permalink</th>
+		<th>Position</th>
+		<th>Visible</th>
+	</tr>
+	
+	<% @pages.each do |page| %>
+	
+	<tr>		
+		<td><%= page.name %></td>
+		<td><%= page.permalink %></td>
+		<td><%= page.position %></td>
+		<td><%= page.visible ? 'Yes' : 'No' %></td>	
+		<td><%= link_to "show",{ :action => 'show', :id => page.id } %></td>
+		<td><%= link_to "edit",{ :action => 'edit', :id => page.id } %></td>
+		<td><%= link_to "delete",{ :action => 'delete', :id => page.id } %></td>
+			
+	</tr>
+	
+	<% end %>
+</table>

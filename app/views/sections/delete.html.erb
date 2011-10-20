@@ -1,0 +1,13 @@
+
+
+<%= link_to "<< Back to list", :action => 'list' %>
+
+
+<%= form_for(:section, :url => { :action => 'destroy', :id => @section.id }) do |f|%>
+
+<p>Are you sure you want to delete <%= @section.name %>?</p>
+
+<%= submit_tag "Destroy Section" %>
+
+<% end %>
+

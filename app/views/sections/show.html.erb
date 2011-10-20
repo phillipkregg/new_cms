@@ -1,0 +1,26 @@
+
+<%= link_to "Back to List", {:action => 'list'} %>
+
+<table>
+	<tr>
+		<th>Name:</th>
+		<td><%= @section.name %></td>
+	</tr>
+	<tr>
+		<th>Position:</th>
+		<td><%= @section.position %></td>
+	</tr>
+	<tr>
+		<th>Visible:</th>
+		<td><%= @section.visible ? 'Yes' : 'No' %></td>
+	</tr>
+	<tr>
+		<th>Content Type:</th>
+		<td><%= @section.content_type %></td>
+	</tr>
+	<tr>
+		<th>Content:</th>
+		<td><%= @section.content %></td>
+	</tr>
+	
+</table>

@@ -1,0 +1,28 @@
+<h2>Sections</h2>
+
+<%= link_to "Create New Section", {:action => 'new'} %>
+
+
+<table>	
+	<tr>
+		<th>Section Name</th>
+		<th>Position</th>
+		<th>Visible</th>
+		<th>Content Type</th>
+		<th>Content</th>
+	</tr>
+
+<% @sections.each do |section| %>
+	<tr>
+		<td><%= section.name %></td>
+		<td><%= section.position %></td>
+		<td><%= section.visible ? 'Yes' : 'No'%></td>
+		<td><%= section.content_type %></td>
+		<td><%= section.content %></td>
+		<td><%= link_to "show", {:action => 'show', :id => section.id } %></td>
+		<td><%= link_to "edit", {:action => 'edit', :id => section.id } %></td>
+		<td><%= link_to "delete", {:action => 'delete', :id => section.id } %></td>
+	</tr>
+<% end %>
+	
+</table>
