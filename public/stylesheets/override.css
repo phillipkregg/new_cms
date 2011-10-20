@@ -1,0 +1,61 @@
+/* Colors
+ 
+dark blue:    #332532
+dark teal:     #644D52
+light red:     #F77A52
+light orange: #FF974F
+salmon:        #A49A87
+
+*/
+
+
+body {
+	background-color: #A49A87;
+}
+
+.container {
+	background-color: #FFFFFF;
+	padding: 10px;
+}
+
+#header {
+	text-align: center;
+	background-color:  #332532;
+	padding: 10px;
+	
+	
+}
+#header h1 {
+	color: #FFFFFF;
+}
+
+
+/* large action buttons */
+a.action { 
+	float: right; 
+	padding: 2px 5px; 
+	margin: 0 0 1em 1em; 
+  	background: #F77A52; 
+  	color: #FFFFFF;  
+  	border: 1px solid #4C2516;
+  	text-decoration: none; 
+  	font-size: 0.8em; text-align: center; }
+
+a.action:hover { background: #FF974F; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

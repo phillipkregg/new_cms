@@ -1,11 +1,15 @@
 class DemoController < ApplicationController
   
+  layout 'admin'
+  
   def index
     render 
   end
   
-  def hello
-    
+  def hello    
   end
+  
+  
+  
   
 end
