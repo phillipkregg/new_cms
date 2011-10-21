@@ -31,7 +31,7 @@ class SectionsController < ApplicationController
       flash[:notice] = "Section created successfully."
       redirect_to :action => 'list'
     else
-      flash[:notice] = "Create failed - you need to enter a name"
+      flash.now[:notice] = "Create failed - you need to enter a name"
       @section_count = Section.count + 1
       render('new')
     end
