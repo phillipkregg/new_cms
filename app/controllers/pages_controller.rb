@@ -17,6 +17,7 @@ class PagesController < ApplicationController
   
   def new
     @page = Page.new
+    @page_count = Page.count + 1
   end
     
   def create
@@ -30,6 +31,7 @@ class PagesController < ApplicationController
     else
       # if error saving
       flash.now[:notice] = "Make sure your page has a name - genius."
+      @page_count = Page.count + 1
       render('new')
     end
         
@@ -37,6 +39,7 @@ class PagesController < ApplicationController
   
   def edit
     @page = Page.find(params[:id])  
+    @page_count = Page.count
   end  
   
   def update
@@ -47,6 +50,7 @@ class PagesController < ApplicationController
       redirect_to(:action => 'show', :id => @page.id)
     else
       flash.now[:notice] = "Page could not be updated"
+      @page_count = Page.count
       render('edit')
       
     end

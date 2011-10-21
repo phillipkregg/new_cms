@@ -19,7 +19,7 @@
 		<td><%= page.name %></td>
 		<td><%= page.permalink %></td>
 		<td><%= page.position %></td>
-		<td><%= page.visible ? 'Yes' : 'No' %></td>	
+		<td><%= status_tag(page.visible) %></td>	
 		<td><%= link_to "show",{ :action => 'show', :id => page.id } %></td>
 		<td><%= link_to "edit",{ :action => 'edit', :id => page.id } %></td>
 		<td><%= link_to "delete",{ :action => 'delete', :id => page.id } %></td>

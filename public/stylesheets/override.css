@@ -13,6 +13,7 @@ body {
 	background-color: #A49A87;
 }
 
+
 .container {
 	background-color: #FFFFFF;
 	padding: 10px;
@@ -31,7 +32,8 @@ body {
 
 
 /* large action buttons */
-a.action { 
+a.action {
+	
 	float: right; 
 	padding: 2px 5px; 
 	margin: 0 0 1em 1em; 
@@ -41,15 +43,35 @@ a.action {
   	text-decoration: none; 
   	font-size: 0.8em; text-align: center; }
 
-a.action:hover { background: #FF974F; }
+a.action:hover { 
+	background: #FF974F;
+	text-decoration: underline;	
+}
 
 
 
 
+span.status {
+	
+	display: block;
+	width: 10px;
+	height: 10px;
+	margin: 0.25em auto;
+	padding: 0;
+	border: 1px solid #000000;
+	
+}
 
+span.status.true {
+	
+	background: green;
+	color: green;
+}
 
-
-
+span.status.false {	
+	background: red;
+	color: red;
+}
 
 
 

@@ -19,6 +19,7 @@ class SectionsController < ApplicationController
   
   def new
     @section = Section.new
+    @section_count = Section.count + 1
   end
   
   
@@ -31,6 +32,7 @@ class SectionsController < ApplicationController
       redirect_to :action => 'list'
     else
       flash[:notice] = "Create failed - you need to enter a name"
+      @section_count = Section.count + 1
       render('new')
     end
   end
@@ -39,6 +41,7 @@ class SectionsController < ApplicationController
   
   def edit
     @section = Section.find(params[:id])
+    @section_count = Section.count
   end
   
   
@@ -50,6 +53,7 @@ class SectionsController < ApplicationController
       redirect_to(:action => 'show', :id => @section.id)
     else
       flash[:notice] = "Update did not succeed - you need to enter a name"
+      @section_count = Section.count
       render('edit')
     end
   end

@@ -6,5 +6,5 @@ class Subject < ActiveRecord::Base
   scope :invisible, where(:visible => false)
   scope :search, lambda {|query| where(["name LIKE ?","%#{query}%"])}
   
-  validates :name, :presence => true
+  validates_presence_of :name
 end

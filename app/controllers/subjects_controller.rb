@@ -21,6 +21,7 @@ class SubjectsController < ApplicationController
   
   def new
     @subject = Subject.new
+    @subject_count = Subject.count + 1
   end
   
   
@@ -35,7 +36,8 @@ class SubjectsController < ApplicationController
       redirect_to :action => 'list'
     else
       # if save fails, redisplay the form
-      flash[:notice] = "Please add a name."
+      flash.now[:notice] = "Please add a name."
+      @subject_count = Subject.count + 1
       render('new')
     end
   end
@@ -43,6 +45,7 @@ class SubjectsController < ApplicationController
   
   def edit
     @subject = Subject.find(params[:id])
+    @subject_count = Subject.count
   end
   
   
@@ -58,6 +61,7 @@ class SubjectsController < ApplicationController
     else
       # if save fails, redisplay the form
       flash[:notice] = "Please add a Name"
+      @subject_count = Subject.count
       render('edit')
     end
   end
