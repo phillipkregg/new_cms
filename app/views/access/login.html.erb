@@ -1,0 +1,19 @@
+<%= @page_title = "Admin Login" %>
+
+<div class="login">
+	<%= form_tag(:action => 'attempt_login') do %>
+	<table>
+		<tr>
+			<td><%= label_tag(:username) %></td>
+			<td><%= text_field_tag(:username) %></td>
+		<tr>
+			<td><%= label_tag(:password) %></td>
+			<td><%= text_field_tag(:password) %></td>
+		</tr>	
+		<tr>
+			<td>&nbsp;</td>
+			<td><%= submit_tag("Login") %></td>
+		</tr>	
+	</table>
+	<% end %>
+</div>
