@@ -1,0 +1,9 @@
+<h2>Edit Admin User</h2>
+
+<%= form_for(:admin_user, :url => {:action => 'update', :id => @admin_user.id}) do |f| %>
+
+<%= render :partial => 'form', :locals => {:f => f} %>
+
+<%= submit_tag "Update Admin User" %>
+
+<% end %>

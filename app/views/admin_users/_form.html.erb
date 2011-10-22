@@ -1,0 +1,19 @@
+	<%= error_messages_for(@admin_user) %>
+	
+	<ul>
+		<%= f.label(:first_name) %>
+		<li><%= f.text_field(:first_name) %></li>
+		
+		<%= f.label(:last_name) %>
+		<li><%= f.text_field(:last_name) %></li>
+		
+		<%= f.label(:username) %>
+		<li><%= f.text_field(:username) %></li>
+		
+		<%= f.label(:email) %>
+		<li><%= f.text_field(:email) %></li>
+		
+		<%= f.label(:password) %>
+		<li><%= f.password_field(:password) %></li>
+		
+	</ul>	

@@ -4,6 +4,8 @@ class AdminUser < ActiveRecord::Base
   has_many :section_edits 
   has_many :sections, :through => :section_edits
   
+  attr_accessor :password # without this you will get 'method: password not found' error
+  
   EMAIL_REGEX = /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
   
   #validates_presence_of :first_name
@@ -22,6 +24,7 @@ class AdminUser < ActiveRecord::Base
   validates :first_name, :presence => true, :length => {:maximum => 25}
   validates :last_name, :presence => true, :length => {:maximum  => 50}
   validates :username, :length => {:within => 8..25}, :uniqueness  => true
+  validates :password, :presence => true
   validates :email, :presence => true, :length => {:maximum => 100}, 
             :format => EMAIL_REGEX, :confirmation => true 
   # Only on Create, so other attributes of this user can be changed
@@ -33,9 +36,13 @@ class AdminUser < ActiveRecord::Base
   
   
   scope :named, lambda {|first, last| where(:first_name => first, :last_name => last)}
+  scope :sorted, order("admin_users.last_name ASC, admin_users.first_name ASC")
   
   attr_protected :hashed_password, :salt
   
+  def name
+    "#{first_name} #{last_name}"
+  end  
   
   ##### Authentication #####
   
