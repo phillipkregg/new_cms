@@ -35,6 +35,12 @@ li {
 }
 
 
+#navigation {
+	float: left;
+}
+
+
+
 /* large action buttons */
 a.action {
 	
