@@ -3,6 +3,7 @@ class SectionsController < ApplicationController
   layout 'admin'
   
   before_filter :confirm_logged_in
+  before_filter :find_page
   
   def index
     list
@@ -11,7 +12,7 @@ class SectionsController < ApplicationController
   
   
   def list
-    @sections = Section.order("sections.position ASC")
+    @sections = Section.order("sections.position ASC").where(:page_id => @page.id)
   end
   
   
@@ -20,8 +21,9 @@ class SectionsController < ApplicationController
   end
   
   def new
-    @section = Section.new
-    @section_count = Section.count + 1
+    @section = Section.new(:page_id => @page.id)
+    @section_count = @page.sections.size + 1
+    @pages = Page.order('position ASC')
   end
   
   
@@ -31,7 +33,7 @@ class SectionsController < ApplicationController
     
     if @section.save
       flash[:notice] = "Section created successfully."
-      redirect_to :action => 'list'
+      redirect_to(:action => 'list', :page_id => @section.page_id )
     else
       flash.now[:notice] = "Create failed - you need to enter a name"
       @section_count = Section.count + 1
@@ -44,6 +46,7 @@ class SectionsController < ApplicationController
   def edit
     @section = Section.find(params[:id])
     @section_count = Section.count
+    @pages = Page.order('position ASC')
   end
   
   
@@ -52,7 +55,7 @@ class SectionsController < ApplicationController
     
     if @section.update_attributes(params[:section])
       flash[:notice] = "Section update successful."
-      redirect_to(:action => 'show', :id => @section.id)
+      redirect_to(:action => 'list', :page_id => @section.page_id )
     else
       flash[:notice] = "Update did not succeed - you need to enter a name"
       @section_count = Section.count
@@ -70,9 +73,17 @@ class SectionsController < ApplicationController
   def destroy
     section = Section.find(params[:id]).destroy
     flash[:notice] = "Section Destroyed successfully"
-    redirect_to :action => 'list'    
+    redirect_to(:action => 'list', :page_id => @section.page_id )    
   end
   
+  
+  private
+  
+  def find_page
+   if params[:page_id]
+    @page = Page.find_by_id(params[:page_id])
+   end   
+  end
   
   
   

@@ -1,6 +1,10 @@
 <h2>Sections</h2>
 
-<%= link_to "Create New Section", {:action => 'new'} %>
+<%= link_to "<< Back to Pages", { :controller => 'pages', :action => 'list', :subject_id => @page.subject_id } %>
+
+<div>
+
+<%= link_to "Create New Section", {:action => 'new', :page_id => @page.id}  %>
 
 
 <table>	
@@ -18,11 +22,12 @@
 		<td><%= section.position %></td>
 		<td><%= section.visible ? 'Yes' : 'No'%></td>
 		<td><%= section.content_type %></td>
-		<td><%= section.content %></td>
-		<td><%= link_to "show", {:action => 'show', :id => section.id } %></td>
-		<td><%= link_to "edit", {:action => 'edit', :id => section.id } %></td>
-		<td><%= link_to "delete", {:action => 'delete', :id => section.id } %></td>
+		<td><%= section.content %></td>		
+		<td><%= link_to "show", {:action => 'show', :id => section.id, :page_id => @page.id } %></td>
+		<td><%= link_to "edit", {:action => 'edit', :id => section.id, :page_id => @page.id } %></td>
+		<td><%= link_to "delete", {:action => 'delete', :id => section.id, :page_id => @page.id } %></td>
 	</tr>
 <% end %>
 	
 </table>
+</div>

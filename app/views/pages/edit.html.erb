@@ -1,8 +1,9 @@
-<%= link_to "Back to List", :action => 'list' %>
+<%= link_to "Back to List", :action => 'list', :subject_id => @subject.id %>
 
 <h2>Edit Page</h2>
 
-<%= form_for(:page, :url => { :action => 'update', :id => @page.id }) do |f| %>
+<%= form_for(:page, :url => { :action => 'update', :id => @page.id, 
+	:subject_id => @subject.id }) do |f| %>
 
 
 	<%= render(:partial => 'form', :locals => {:f => f} ) %>

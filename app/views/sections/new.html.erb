@@ -1,9 +1,9 @@
 
-<%= link_to "Back to List", {:action => 'list'} %>
+<%= link_to "Back to List", {:action => 'list', :page_id => @page.id} %>
 
 <h2>Create a New Section</h2>
 
-<%= form_for(:section, :url => {:action => 'create'}) do |f| %>
+<%= form_for(:section, :url => {:action => 'create', :page_id => @page.id}) do |f| %>
 	
 	<%= render(:partial => 'form', :locals => {:f => f}) %>
 	

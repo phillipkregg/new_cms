@@ -1,8 +1,9 @@
-<%= link_to "Back to List", :action => 'list' %>
+<%= link_to "Back to List", {:action => 'list', :subject_id => @subject.id }%>
 
 <h2>Delete Page</h2>
 
-<%= form_for(:page, :url => {:action => 'destroy', :id => @page.id }) do |f| %>
+<%= form_for(:page, :url => {:action => 'destroy', :id => @page.id, 
+		:subject_id => @subject.id }) do |f| %>
 
 <p>Are you sure you want to delete <%= @page.name %>?</p>
 

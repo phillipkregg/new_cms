@@ -1,9 +1,11 @@
 
 <% @page_title = "Pages List" %>
 
+<%= link_to "Back to Subjects List", { :controller => 'subjects', :action => 'list' }%>
+
 <h2>Pages List</h2>
 
-<%= link_to "Create New Page", :action => 'new' %>
+<%= link_to "Create New Page", :action => 'new', :subject_id => @subject.id %>
 
 <table>
 	<tr>
@@ -20,9 +22,14 @@
 		<td><%= page.permalink %></td>
 		<td><%= page.position %></td>
 		<td><%= status_tag(page.visible) %></td>	
-		<td><%= link_to "show",{ :action => 'show', :id => page.id } %></td>
-		<td><%= link_to "edit",{ :action => 'edit', :id => page.id } %></td>
-		<td><%= link_to "delete",{ :action => 'delete', :id => page.id } %></td>
+		<td><%= link_to "view sections", :controller => 'sections', :action => 'list', 
+			:page_id => page.id %></td>
+		<td><%= link_to "show",{ :action => 'show', :id => page.id,
+			 :subject_id => @subject.id } %></td>
+		<td><%= link_to "edit",{ :action => 'edit', :id => page.id, 
+			:subject_id => @subject.id } %></td>
+		<td><%= link_to "delete",{ :action => 'delete', :id => page.id, 
+			:subject_id => @subject.id } %></td>
 			
 	</tr>
 	

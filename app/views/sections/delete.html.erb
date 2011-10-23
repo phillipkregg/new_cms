@@ -1,6 +1,6 @@
 
 
-<%= link_to "<< Back to list", :action => 'list' %>
+<%= link_to "<< Back to list", :action => 'list', :page_id => @page.id %>
 
 
 <%= form_for(:section, :url => { :action => 'destroy', :id => @section.id }) do |f|%>

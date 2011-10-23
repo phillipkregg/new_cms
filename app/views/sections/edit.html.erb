@@ -1,10 +1,11 @@
 
-<%= link_to "Back to List", {:action => 'list'} %>
+<%= link_to "Back to List", {:action => 'list', :page_id => @page.id} %>
 
 
 <h2>Edit Section</h2>
 
-<%= form_for(:section, :url => { :action => 'update', :id => @section.id }) do |f| %>
+<%= form_for(:section, :url => { :action => 'update', :id => @section.id, 
+		:page_id => @page.id }) do |f| %>
 	
 	<%= render(:partial => 'form', :locals => {:f => f}) %>
 	
