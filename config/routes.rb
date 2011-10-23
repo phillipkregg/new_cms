@@ -1,8 +1,7 @@
 NewCms::Application.routes.draw do
   
-  get "demo/index"
-  
   match 'admin', :to => 'access#menu'
+  match 'show/:id', :to => 'public#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -53,7 +52,7 @@ NewCms::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "demo#index"
+  root :to => "public#index"
 
   # See how all your routes lay out with "rake routes"
 

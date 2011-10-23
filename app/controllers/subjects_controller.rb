@@ -12,7 +12,7 @@ class SubjectsController < ApplicationController
   
   
   def list
-    @subjects = Subject.order("subjects.position ASC")
+    @subjects = Subject.sorted
   end
   
   
@@ -28,11 +28,13 @@ class SubjectsController < ApplicationController
   
   
   def create
+    new_position = params[:subject].delete(:position)
     # create an instance of a new object using paramaters coming from the form
     @subject = Subject.new(params[:subject])
     
     # save the object
     if @subject.save
+      @subject.move_to_position(new_position)
       # if the save succeeds
       flash[:notice] = "Subject created successfully."
       redirect_to :action => 'list'
@@ -56,7 +58,9 @@ class SubjectsController < ApplicationController
     @subject = Subject.find(params[:id])
         
     # Update the object
+    new_position = params[:subject].delete(:position)
     if @subject.update_attributes(params[:subject])
+      @subject.move_to_position(new_position)
       # if the update succeeds
       flash[:notice] = "Subject updated successfully."
       redirect_to(:action => 'show', :id => @subject.id)
@@ -75,7 +79,9 @@ class SubjectsController < ApplicationController
   
   
   def destroy
-    Subject.find(params[:id]).destroy
+    subject = Subject.find(params[:id])
+    subject.move_to_position(nill)
+    subject.destroy
     flash[:notice] = "Subject destroyed successfully."
     redirect_to(:action => 'list')
   end

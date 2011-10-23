@@ -12,7 +12,7 @@ class SectionsController < ApplicationController
   
   
   def list
-    @sections = Section.order("sections.position ASC").where(:page_id => @page.id)
+    @sections = Section.sorted.where(:page_id => @page.id)
   end
   
   
@@ -28,6 +28,7 @@ class SectionsController < ApplicationController
   
   
   def create
+    new_position = params[:section].delete(:position)
     # instantiates new Section object based on form params
     @section = Section.new(params[:section])
     
@@ -36,7 +37,7 @@ class SectionsController < ApplicationController
       redirect_to(:action => 'list', :page_id => @section.page_id )
     else
       flash.now[:notice] = "Create failed - you need to enter a name"
-      @section_count = Section.count + 1
+      @section_count = @page.sections.size + 1
       render('new')
     end
   end
@@ -45,20 +46,21 @@ class SectionsController < ApplicationController
   
   def edit
     @section = Section.find(params[:id])
-    @section_count = Section.count
+    @section_count = @page.sections.size
     @pages = Page.order('position ASC')
   end
   
   
   def update
     @section = Section.find(params[:id])     
+    new_position = params[:section].delete(:position)
     
     if @section.update_attributes(params[:section])
       flash[:notice] = "Section update successful."
       redirect_to(:action => 'list', :page_id => @section.page_id )
     else
       flash[:notice] = "Update did not succeed - you need to enter a name"
-      @section_count = Section.count
+      @section_count = @page.sections.size
       render('edit')
     end
   end
@@ -71,7 +73,9 @@ class SectionsController < ApplicationController
   
   
   def destroy
-    section = Section.find(params[:id]).destroy
+    section = Section.find(params[:id])
+    section.move_to_position(nil)
+    section.destroy
     flash[:notice] = "Section Destroyed successfully"
     redirect_to(:action => 'list', :page_id => @section.page_id )    
   end
